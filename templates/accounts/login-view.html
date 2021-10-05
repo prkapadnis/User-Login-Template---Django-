@@ -1,0 +1,39 @@
+{% extends 'accounts/base.html' %}
+
+{% block title %}
+<title> Login </title>
+{% endblock %}
+
+{% block content %}
+
+{% if messages %}
+{% for message in messages %}
+<div class="w-50 alert alert-danger" role="alert" style="margin: auto; margin-top: 10px;">
+    {{ message }}
+</div>
+{% endfor %}
+{% endif %}
+<div class="card w-50" style="margin: auto; margin-top: 40px;">
+    <div class="card-header">
+        <p class="text-center" style="font-size: 30px; font-weight: bold;">Login</p>
+    </div>
+    <div class="card-body p-3">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="username" class="form-label"> Username </label>
+                <input type="text" name="username" placeholder="Username" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="Password" class="form-label"> Password </label>
+                <input type="password" name="password" placeholder="Password" class="form-control" required>
+            </div>
+            <div class="mb-3 d-grid">
+                <input type="submit" value="Submit" class="btn btn-primary">
+            </div>
+        </form>
+        <p>Don't have account <a href="{% url 'register' %}"
+                style="color: red; text-decoration: none; font-weight: bolder;"> Register here </a></p>
+    </div>
+</div>
+{% endblock %}
